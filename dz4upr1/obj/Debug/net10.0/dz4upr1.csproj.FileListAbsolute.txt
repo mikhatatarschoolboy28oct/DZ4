@@ -1,0 +1,14 @@
+/Users/mihailsmirnov/DZ4/dz4upr1/bin/Debug/net10.0/dz4upr1
+/Users/mihailsmirnov/DZ4/dz4upr1/bin/Debug/net10.0/dz4upr1.deps.json
+/Users/mihailsmirnov/DZ4/dz4upr1/bin/Debug/net10.0/dz4upr1.runtimeconfig.json
+/Users/mihailsmirnov/DZ4/dz4upr1/bin/Debug/net10.0/dz4upr1.dll
+/Users/mihailsmirnov/DZ4/dz4upr1/bin/Debug/net10.0/dz4upr1.pdb
+/Users/mihailsmirnov/DZ4/dz4upr1/obj/Debug/net10.0/dz4upr1.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mihailsmirnov/DZ4/dz4upr1/obj/Debug/net10.0/dz4upr1.AssemblyInfoInputs.cache
+/Users/mihailsmirnov/DZ4/dz4upr1/obj/Debug/net10.0/dz4upr1.AssemblyInfo.cs
+/Users/mihailsmirnov/DZ4/dz4upr1/obj/Debug/net10.0/dz4upr1.csproj.CoreCompileInputs.cache
+/Users/mihailsmirnov/DZ4/dz4upr1/obj/Debug/net10.0/dz4upr1.dll
+/Users/mihailsmirnov/DZ4/dz4upr1/obj/Debug/net10.0/refint/dz4upr1.dll
+/Users/mihailsmirnov/DZ4/dz4upr1/obj/Debug/net10.0/dz4upr1.pdb
+/Users/mihailsmirnov/DZ4/dz4upr1/obj/Debug/net10.0/dz4upr1.genruntimeconfig.cache
+/Users/mihailsmirnov/DZ4/dz4upr1/obj/Debug/net10.0/ref/dz4upr1.dll
