@@ -2,23 +2,33 @@
 
 class Program
 {
-    static void Swap(ref int a, ref int b)
+    static bool Factorial(int n, out long result)
     {
-        int temp = a;
-        a = b;
-        b = temp;
+        result = 1;
+        try
+        {
+            checked
+            {
+                for (int i = 2; i <= n; i++)
+                    result *= i;
+            }
+            return true;
+        }
+        catch (OverflowException)
+        {
+            result = 0;
+            return false;
+        }
     }
 
     static void Main()
     {
-        Console.WriteLine("Введите первое число:");
-        int x=int.Parse(Console.ReadLine());
-        Console.WriteLine("Введите второе число:");
-        int y=int.Parse(Console.ReadLine());
+        Console.Write("Введите число: ");
+        int n = int.Parse(Console.ReadLine());
 
-        Swap(ref x, ref y);
-        Console.WriteLine($"После обмена: x = {x}, y = {y}");
-
+        if (Factorial(n, out long res))
+            Console.WriteLine($"{n}! = {res}");
+        else
+            Console.WriteLine("Переполнение!");
     }
-
 }
