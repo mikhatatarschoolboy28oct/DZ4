@@ -1,34 +1,17 @@
 ﻿using System;
-
 class Program
 {
-    static bool Factorial(int n, out long result)
+    static long Factorial(int n)
     {
-        result = 1;
-        try
-        {
-            checked
-            {
-                for (int i = 2; i <= n; i++)
-                    result *= i;
-            }
-            return true;
-        }
-        catch (OverflowException)
-        {
-            result = 0;
-            return false;
-        }
+        if(n<=1)
+            return 1;
+        return n*Factorial(n-1);   
     }
 
     static void Main()
     {
-        Console.Write("Введите число: ");
-        int n = int.Parse(Console.ReadLine());
-
-        if (Factorial(n, out long res))
-            Console.WriteLine($"{n}! = {res}");
-        else
-            Console.WriteLine("Переполнение!");
+        Console.WriteLine("Введите число:");
+        int x= int.Parse(Console.ReadLine());
+        Console.WriteLine($"Факториал равен:{Factorial(x)}");
     }
 }
