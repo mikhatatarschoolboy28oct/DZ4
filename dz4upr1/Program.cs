@@ -1,32 +1,43 @@
 ﻿using System;
+using System.Threading;
 
 class Program
 {
-    
-    static int Calc(ref long product, out long average, params int[] arr)
+    static string[][] d =
     {
-        int sum = 0;
-        product = 1;
-
-        for (int i = 0; i < arr.Length; i++)
-        {
-            sum += arr[i];
-            product *= arr[i];
-        }
-
-        average = sum / arr.Length;
-        return sum;
-    }
+        new[] { "#####", "#   #", "#   #", "#   #", "#####" },
+        new[] { "  #  ", " ##  ", "  #  ", "  #  ", " ### " },
+        new[] { "#####", "    #", "#####", "#    ", "#####" },
+        new[] { "#####", "    #", "#####", "    #", "#####" },
+        new[] { "#   #", "#   #", "#####", "    #", "    #" },
+        new[] { "#####", "#    ", "#####", "    #", "#####" },
+        new[] { "#####", "#    ", "#####", "#   #", "#####" },
+        new[] { "#####", "    #", "    #", "    #", "    #" },
+        new[] { "#####", "#   #", "#####", "#   #", "#####" },
+        new[] { "#####", "#   #", "#####", "    #", "#####" }
+    };
 
     static void Main()
     {
-        long product = 0;
-        long average;
+        while (true)
+        {
+            string s = Console.ReadLine().Trim().ToLower();
+            if (s == "exit" || s == "закрыть") return;
 
-        int sum = Calc(ref product, out average, 2, 4, 6, 8);
+            int n = int.Parse(s);
 
-        Console.WriteLine("Сумма: " + sum);
-        Console.WriteLine("Произведение: " + product);
-        Console.WriteLine("Среднее: " + average);       
+            if (n >= 0 && n <= 9)
+                foreach (string line in d[n])
+                    Console.WriteLine(line);
+            else
+            {
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.Clear();
+                Console.WriteLine("Ошибка: число должно быть от 0 до 9!");
+                Thread.Sleep(3000);
+                Console.ResetColor();
+                Console.Clear();
+            }
+        }
     }
 }
