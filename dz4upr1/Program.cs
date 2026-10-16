@@ -1,43 +1,60 @@
 ﻿using System;
-using System.Threading;
+
+enum Grumpiness { Low, Medium, High, Extreme }
+
+struct Ded
+{
+    public string Name;
+    public Grumpiness Level;
+    public string[] Phrases;
+    public int Bruises;
+
+    public Ded(string name, Grumpiness level, params string[] phrases)
+    {
+        Name = name;
+        Level = level;
+        Phrases = phrases;
+        Bruises = 0;
+    }
+
+    public static int Beat(ref Ded ded, params string[] badWords)
+    {
+        int count = 0;
+
+        foreach (string word in badWords)
+        {
+            foreach (string phrase in ded.Phrases)
+            {
+                if (phrase.ToLower().Contains(word.ToLower()))
+                {
+                    count++;
+                    break;
+                }
+            }
+        }
+
+        ded.Bruises += count;
+        return count;
+    }
+}
 
 class Program
 {
-    static string[][] d =
-    {
-        new[] { "#####", "#   #", "#   #", "#   #", "#####" },
-        new[] { "  #  ", " ##  ", "  #  ", "  #  ", " ### " },
-        new[] { "#####", "    #", "#####", "#    ", "#####" },
-        new[] { "#####", "    #", "#####", "    #", "#####" },
-        new[] { "#   #", "#   #", "#####", "    #", "    #" },
-        new[] { "#####", "#    ", "#####", "    #", "#####" },
-        new[] { "#####", "#    ", "#####", "#   #", "#####" },
-        new[] { "#####", "    #", "    #", "    #", "    #" },
-        new[] { "#####", "#   #", "#####", "#   #", "#####" },
-        new[] { "#####", "#   #", "#####", "    #", "#####" }
-    };
-
     static void Main()
     {
-        while (true)
+        Ded[] deds =
         {
-            string s = Console.ReadLine().Trim().ToLower();
-            if (s == "exit" || s == "закрыть") return;
+            new Ded("Иван", Grumpiness.Low, "Ох, молодёжь..."),
+            new Ded("Пётр", Grumpiness.Medium, "Гады!", "Куда катимся?"),
+            new Ded("Степан", Grumpiness.High, "Проститутки!", "Гады!", "Чтоб вас!"),
+            new Ded("Фёдор", Grumpiness.Extreme, "Проститутки!", "Гады!", "Сволочи!", "Тьфу!"),
+            new Ded("Макар", Grumpiness.Medium, "Разболтались!", "Тишину надо!", "Эх!", "Ну и ну!", "Гады!")
+        };
 
-            int n = int.Parse(s);
-
-            if (n >= 0 && n <= 9)
-                foreach (string line in d[n])
-                    Console.WriteLine(line);
-            else
-            {
-                Console.BackgroundColor = ConsoleColor.Red;
-                Console.Clear();
-                Console.WriteLine("Ошибка: число должно быть от 0 до 9!");
-                Thread.Sleep(3000);
-                Console.ResetColor();
-                Console.Clear();
-            }
+        for (int i = 0; i < deds.Length; i++)
+        {
+            int n = Ded.Beat(ref deds[i], "проститутки", "гады", "сволочи");
+            Console.WriteLine($"{deds[i].Name} ({deds[i].Level}): фингалов {n}");
         }
     }
 }
