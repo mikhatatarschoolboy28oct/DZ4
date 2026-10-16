@@ -2,27 +2,18 @@
 
 class Program
 {
-    static int Gcd(int a, int b)
+    static long Fib(int n)
     {
-        while (b != 0)
-        {
-            int r = a % b;
-            a = b;
-            b = r;
-        }
-        return a;
-    }
-
-    
-    static int Gcd(int a, int b, int c)
-    {
-        return Gcd(Gcd(a, b), c);
+        if(n<=0)
+            throw new ArgumentException("n должно быть натуральным.");
+        if(n==1 || n==2)
+            return 1;
+        return Fib(n-1)+Fib(n-2);
     }
 
     static void Main()
     {
-        Console.WriteLine(Gcd(48, 18));       
-        Console.WriteLine(Gcd(48, 18, 30));   
-        Console.WriteLine(Gcd(12, 25, 7));    
+        for (int i=1;i<=10;i++)
+        Console.WriteLine(Fib(i));
     }
 }
