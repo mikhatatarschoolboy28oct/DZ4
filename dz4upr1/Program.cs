@@ -1,17 +1,28 @@
 ﻿using System;
+
 class Program
 {
-    static long Factorial(int n)
+    static int Gcd(int a, int b)
     {
-        if(n<=1)
-            return 1;
-        return n*Factorial(n-1);   
+        while (b != 0)
+        {
+            int r = a % b;
+            a = b;
+            b = r;
+        }
+        return a;
+    }
+
+    
+    static int Gcd(int a, int b, int c)
+    {
+        return Gcd(Gcd(a, b), c);
     }
 
     static void Main()
     {
-        Console.WriteLine("Введите число:");
-        int x= int.Parse(Console.ReadLine());
-        Console.WriteLine($"Факториал равен:{Factorial(x)}");
+        Console.WriteLine(Gcd(48, 18));       
+        Console.WriteLine(Gcd(48, 18, 30));   
+        Console.WriteLine(Gcd(12, 25, 7));    
     }
 }
